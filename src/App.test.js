@@ -22,7 +22,14 @@ test('button has correct initial color, and updates when clicked', () => {
   expect(colorButton).toHaveTextContent('Change to red');
 });
 
-// test('button truns blue when clicked', () => {
-//   render(<App />);
-//   const colorButton = screen.getByRole('button', { name: 'Change to blue' });
-// });
+test('initial conditions', () => {
+  render(<App />); //리액트가 만든 가상돔을 엑세스한다.
+
+  //check that the button starts out enabled
+  const colorButton = screen.getByRole('button', { name: 'Change to blue' });
+  expect(colorButton).toBeEnabled();
+
+  //check that the checkbox start out unchecked
+  const checkbox = screen.getByRole('checkbox');
+  expect(checkbox).not.toBeChecked();
+});
